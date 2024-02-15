@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+	
+<sqlMap namespace="boards">
+	
+	<select id="getAllBoards" resultClass="vo.Board">
+		SELECT	B.board_no 				AS no,
+				B.board_title			AS title,
+				B.board_content			AS content,
+				B.board_read_count 		AS readCount,
+				B.board_updated_date	AS updatedDAte,
+				B.board_created_date 	AS createdDAte,
+				U.user_id 				AS "user.id",
+				U.user_name 			AS "user.name"
+		
+		FROM	sample_boards B, sample_users U
+		
+		WHERE	B.board_deleted = 'N'
+		AND		B.user_id = U.user_id
+		
+		ORDER BY B.board_no desc
+	</select>
+	
+	<select id="getBoardByNo" parameterClass="int" resultClass="vo.Board">
+		SELECT	B.board_no 				AS no,
+				B.board_title			AS title,
+				B.board_content			AS content,
+				B.board_read_count 		AS readCount,
+				B.board_updated_date	AS updatedDate,
+				B.board_created_date 	AS createdDate,
+				U.user_id 				AS "user.id",
+				U.user_name 			AS "user.name"
+		
+		FROM	sample_boards B, sample_users U
+		
+		WHERE	B.board_deleted = 'N'
+		AND		B.user_id = U.user_id
+		AND		B.board_no = #no#
+		
+		ORDER BY B.board_no desc
+	</select>
+	
+	<insert id="insertBoard" parameterClass="vo.Board">
+		INSERT sample_boards
+		(board_no, board_title, board_content, user_id)
+		
+		VALUES
+		(boards_seq.nextval, #title#, #content#, #user.id#)
+	</insert>
+	
+	<update id="updateBoard" parameterClass="vo.Board">
+		UPDATE 	sample_boards
+		
+		SET		board_title = #title#,
+				board_content = #content#,
+				board_read_count = #readCount#,
+				board_deleted = #deleted#,
+				board_updated_date = SYSDATE
+		
+		WHERE	board_no = #no#
+	</update>
+</sqlMap>
+
+
+
+
+
+
+
+
+
+
