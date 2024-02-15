@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+	
+<sqlMap namespace="users">
+	
+	<select id="getUserById" parameterClass="string" resultClass="vo.User">
+		SELECT	user_id 			AS id,
+				user_password 		AS password,
+				user_name 			AS name,
+				user_tel 			AS tel,
+				user_email 			AS email
+				
+		FROM	sample_users
+		
+		WHERE	user_id = #value#
+	</select>
+	
+	<select id="getUserByEmail" parameterClass="string" resultClass="vo.User">
+		SELECT	user_id 			AS id,
+				user_password 		AS password,
+				user_name 			AS name,
+				user_tel 			AS tel,
+				user_email 			AS email
+				
+		FROM	sample_users
+		
+		WHERE	user_email = #value#
+	</select>
+	
+	<insert id="insertUser" parameterClass="vo.User">
+		INSERT INTO sample_users
+		(user_id, user_password, user_name, user_tel, user_email)
+		VALUES
+		(#id#, #password#, #name#, #tel#, #email#)
+	</insert>
+	
+</sqlMap>
+
+
+
+
+
+
+
+
+
+
