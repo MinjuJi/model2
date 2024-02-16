@@ -42,6 +42,18 @@ public class HomeController {
 		
 	}
 	
+	@RequestMapping(path="/logout.do")
+	public String logout(HttpServletRequest req, HttpServletResponse resp) throws Exception {
+	
+		HttpSession session = req.getSession(false);
+		
+		if(session != null) {
+			session.invalidate();
+		}
+		
+		return "redirect:home.do";
+	}
+	
 	@RequestMapping(path="/register.do", method = HttpMethod.GET)
 	public String form(HttpServletRequest req, HttpServletResponse resp) throws Exception{
 		return "registerform.jsp";
