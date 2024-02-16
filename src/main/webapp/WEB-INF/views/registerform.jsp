@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -11,6 +11,8 @@
 <title>bootstrap</title>
 </head>
 <body>
+<c:set var="menu" value="회원가입"/>
+<%@ include file="common/navbar.jsp" %>
 	<div class="container">
 		<div class="row mb-3">
 			<div class="col-12">

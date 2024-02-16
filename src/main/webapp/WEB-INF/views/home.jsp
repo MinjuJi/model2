@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -11,17 +11,12 @@
 <title>bootstrap</title>
 </head>
 <body>
-<div class="comtainer"></div>
-	<div class="row mb-3">
-		<div class="col-12">
-			<h1>홈</h1>
-			<div>
-				<a href="login.do" class="btn btn-outline-primary">로그인</a>
-				<a href="logout.do" class="btn btn-outline-primary">로그아웃</a>
-				<a href="register.do" class="btn btn-outline-primary">회원가입</a>
-			</div>
-			<div>
-				<a href="board/list.do" class="btn btn-outline-primary">게시판</a>
+<c:set var="menu" value="홈"/>
+<%@ include file="common/navbar.jsp" %>
+	<div class="container">
+		<div class="row mb-3">
+			<div class="col-12">
+				<h1>홈</h1>
 			</div>
 		</div>
 	</div>

@@ -12,6 +12,8 @@
 <title>모델2</title>
 </head>
 <body>
+<c:set var="menu" value="게시판"/>
+<%@ include file="../common/navbar.jsp" %>
 	<div class="container">
 		<div class="row mb-3">
 			<div class="col-12">
