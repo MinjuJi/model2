@@ -5,21 +5,21 @@
 		
 		<ul class="navbar-nav">
 			<li class="nav-item me-auto">
-				<a class="nav-link ${menu eq '홈' ? 'active': ''}" href="/model2/home.do">홈</a>
+				<a class="nav-link ${menu eq '홈' ? 'active': ''}" href="/home.do">홈</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link ${menu eq '게시판' ? 'active': ''}" href="/model2/board/list.do">게시판</a>
+				<a class="nav-link ${menu eq '게시판' ? 'active': ''}" href="/board/list.do">게시판</a>
 			</li>
 		</ul>
 		
 		<ul class="navbar-nav ">
 			<c:if test="${empty LOGIN_USER }">
 				<li class="nav-item">
-					<a class="nav-link ${menu eq '로그인' ? 'active': ''}" href="/model2/login.do">로그인</a>
+					<a class="nav-link ${menu eq '로그인' ? 'active': ''}" href="/login.do">로그인</a>
 				</li>
 				
 				<li class="nav-item">
-					<a class="nav-link ${menu eq '회원가입' ? 'active': ''}" href="/model2/register.do">회원가입</a>
+					<a class="nav-link ${menu eq '회원가입' ? 'active': ''}" href="/register.do">회원가입</a>
 				</li>
 			</c:if>
 			
