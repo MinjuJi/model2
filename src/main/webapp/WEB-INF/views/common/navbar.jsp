@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<div>인증이 완료된 사용자 정보 : ${LOGIN_USER }</div>
 <nav class="navbar navbar-expand-sm bg-light">
 	<div class="container">
 		
@@ -12,15 +13,22 @@
 		</ul>
 		
 		<ul class="navbar-nav ">
-			<li class="nav-item">
-				<a class="nav-link ${menu eq '로그인' ? 'active': ''}" href="/model2/login.do">로그인</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="/logout.do">로그아웃</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link ${menu eq '회원가입' ? 'active': ''}" href="/model2/register.do">회원가입</a>
-			</li>
+			<c:if test="${empty LOGIN_USER }">
+				<li class="nav-item">
+					<a class="nav-link ${menu eq '로그인' ? 'active': ''}" href="/model2/login.do">로그인</a>
+				</li>
+				
+				<li class="nav-item">
+					<a class="nav-link ${menu eq '회원가입' ? 'active': ''}" href="/model2/register.do">회원가입</a>
+				</li>
+			</c:if>
+			
+			<c:if test="${not empty LOGIN_USER }">
+				<span class="navbar-text me-3"><strong>${LOGIN_USER.name }</strong>님 환영합니다.</span>
+				<li class="nav-item">
+					<a class="nav-link" href="/logout.do">로그아웃</a>
+				</li>
+			</c:if>
 		</ul>
 		
 	</div>

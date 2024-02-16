@@ -2,6 +2,7 @@ package controllers;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import kr.co.jhta.model2.annotation.Controller;
 import kr.co.jhta.model2.annotation.RequestMapping;
 import kr.co.jhta.model2.constant.HttpMethod;
@@ -21,6 +22,24 @@ public class HomeController {
 	@RequestMapping(path="/login.do")
 	public String loginform(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		return "loginform.jsp";
+	}
+	
+	@RequestMapping(path="/login.do", method = HttpMethod.POST)
+	public String login(HttpServletRequest req, HttpServletResponse resp) throws Exception{
+		
+		String id = req.getParameter("id");
+		String password = req.getParameter("password");
+		
+		try {
+			User user = userService.login(id, password);
+			HttpSession session = req.getSession();
+			session.setAttribute("LOGIN_USER", user);
+			
+			return "redirect:home.do";
+		} catch (Exception ex) {
+			return "redirect:login.do?error=fail";
+		}
+		
 	}
 	
 	@RequestMapping(path="/register.do", method = HttpMethod.GET)
