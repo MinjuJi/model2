@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
@@ -13,37 +12,60 @@
 <title>모델2</title>
 </head>
 <body>
-<div class="container">
-	<div class="row mb-3">
-		<div class="col-12">
-			<h1>게시글 목록</h1>
-			
-			${boardList }
-			
-			<table class="table">
-				<thead>
-					<tr>
-						<th>번호</th>
-						<th>제목</th>
-						<th>조회수</th>
-						<th>작성자</th>
-						<th>등록일</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach var="b" items="${boardList }">
+	<div class="container">
+		<div class="row mb-3">
+			<div class="col-12">
+				<h1>게시글 목록</h1>
+				
+				<p>현재 페이지 : <c:out value="${param.page }" default="1"/></p>
+				
+				<table class="table">
+					<thead>
 						<tr>
-							<th>${b.no}</th>
-							<th>${b.title}</th>
-							<th>${b.readCount}</th>
-							<th>${b.user.name}</th>
-							<th><fmt:formatDate value="${b.createdDate}" pattern="YY년 MM월 dd일"/></th>
+							<th>번호</th>
+							<th>제목</th>
+							<th>조회수</th>
+							<th>작성자</th>
+							<th>등록일</th>
 						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
+					</thead>
+					<tbody>
+						<c:choose>
+							<c:when test="${empty boardList }">
+								<tr>
+									<td colspan="5" class="text-center">데이터가 없습니다.</td>
+								</tr>
+							</c:when>
+							<c:otherwise>
+								<c:forEach var="board" items="${boardList }">
+									<tr>
+										<td>${board.no}</td>
+										<td>${board.title}</td>
+										<td>${board.readCount}</td>
+										<td>${board.user.name}</td>
+										<td><fmt:formatDate value="${board.createdDate }"/></td>
+									</tr>
+								</c:forEach>
+							</c:otherwise>
+						</c:choose>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		
+		<div class="row mb-3">
+			<div class="col-12">
+				<nav class="pagination justify-content-center">
+					<ul class="pagination">
+						<c:forEach var="num" begin="1" end="5">
+							<li class="page-item ${param.page eq num ? 'active' : '' }">
+							<a href="list.do?page=${num }" class="page-link">${num }</a>
+							</li>
+						</c:forEach>
+					</ul>
+				</nav>
+			</div>
 		</div>
 	</div>
-</div>
 </body>
 </html>
