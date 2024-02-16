@@ -18,6 +18,11 @@ public class HomeController {
 		return "home.jsp";
 	}
 	
+	@RequestMapping(path="/login.do")
+	public String loginform(HttpServletRequest req, HttpServletResponse resp) throws Exception {
+		return "loginform.jsp";
+	}
+	
 	@RequestMapping(path="/register.do", method = HttpMethod.GET)
 	public String form(HttpServletRequest req, HttpServletResponse resp) throws Exception{
 		return "registerform.jsp";
