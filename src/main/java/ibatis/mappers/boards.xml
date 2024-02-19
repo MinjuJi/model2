@@ -30,6 +30,7 @@
 				B.board_read_count 		AS readCount,
 				B.board_updated_date	AS updatedDate,
 				B.board_created_date 	AS createdDate,
+				B.board_deleted			AS deleted,
 				U.user_id 				AS "user.id",
 				U.user_name 			AS "user.name"
 		

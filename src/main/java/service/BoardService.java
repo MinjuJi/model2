@@ -18,7 +18,10 @@ public class BoardService {
 	}
 
 	public Board getBoardDetail(int no) throws Exception{
-
+		Board board = boardDao.getBoardByNo(no);
+		board.setReadCount(board.getReadCount() + 1);
+		boardDao.updateBoard(board);
+		
 		return boardDao.getBoardByNo(no);
 	}
 	
