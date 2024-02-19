@@ -1,7 +1,10 @@
 package controllers;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import dto.BoardListDto;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
@@ -58,9 +61,18 @@ public class BoardController {
 	
 	@RequestMapping(path = "/list.do")
 	public String list(HttpServletRequest req, HttpServletResponse resp) throws Exception{
+		int currentPage = Integer.parseInt(req.getParameter("page"));
+		//String opt = req.getParameter("opt");
+		//String keyword = req.getParameter("keyword");
 		
-		List<Board> boardList = boardService.getBoardList();
-		req.setAttribute("boardList", boardList);
+		Map<String, Object> param = new HashMap<String, Object>();
+		//param.put("opt", opt);
+		//param.put("keyword", keyword);
+		
+		BoardListDto dto = boardService.getBoardList(currentPage, param);
+		req.setAttribute("boardList", dto.getItems()); 		// List<Board> 객체다.
+		req.setAttribute("paging", dto.getPagination());	// Pagination 객체다.
+		
 		return "board/list.jsp";
 	}
 

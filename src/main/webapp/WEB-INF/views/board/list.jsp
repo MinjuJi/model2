@@ -17,9 +17,16 @@
 			<div class="col-12">
 				<h1>게시글 목록</h1>
 				
-				<p>현재 페이지 : <c:out value="${param.page }" default="1"/></p>
+				<p>현재 페이지 : ${paging.currentPage } / ${paging.totalPages }</p>
 				
 				<table class="table">
+					<colgroup>
+						<col width="10%">
+						<col width="*">
+						<col width="10%">
+						<col width="15%">
+						<col width="15%">
+					</colgroup>
 					<thead>
 						<tr>
 							<th>번호</th>
@@ -55,13 +62,21 @@
 		
 		<div class="row mb-3">
 			<div class="col-12">
-				<nav class="pagination justify-content-center">
-					<ul class="pagination">
-						<c:forEach var="num" begin="1" end="5">
+				<nav>
+					<ul class="pagination justify-content-center">
+						<li class="page-item ${paging.first ? 'disabled' : '' }">
+							<a href="list.do?page=${paging.currentPage - 1 }" class="page-link">이전</a>
+						</li>
+						
+						<c:forEach var="num" begin="${paging.beginPage }" end="${paging.endPage }">
 							<li class="page-item ${param.page eq num ? 'active' : '' }">
 								<a href="list.do?page=${num }" class="page-link">${num }</a>
 							</li>
 						</c:forEach>
+						
+						<li class="page-item ${paging.last ? 'disabled' : '' }">
+							<a href="list.do?page=${paging.currentPage + 1 }" class="page-link">다음</a>
+						</li>
 					</ul>
 				</nav>
 			</div>

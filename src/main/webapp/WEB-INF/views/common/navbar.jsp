@@ -7,7 +7,7 @@
 				<a class="nav-link ${menu eq '홈' ? 'active': ''}" href="/home.do">홈</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link ${menu eq '게시판' ? 'active': ''}" href="/board/list.do">게시판</a>
+				<a class="nav-link ${menu eq '게시판' ? 'active': ''}" href="/board/list.do?page=1">게시판</a>
 			</li>
 		</ul>
 		
