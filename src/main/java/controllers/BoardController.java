@@ -56,7 +56,7 @@ public class BoardController {
 		
 		boardService.save(board);
 		
-		return "redirect:list.do";
+		return "redirect:list.do?page=1";
 	}
 	
 	@RequestMapping(path = "/list.do")
@@ -86,11 +86,21 @@ public class BoardController {
 	
 	@RequestMapping(path = "/modify.do")
 	public String modifyform(HttpServletRequest req, HttpServletResponse resp) throws Exception{
+		int no = Integer.parseInt(req.getParameter("no"));
+		Board board = boardService.getBoardDetail(no);
+		req.setAttribute("board", board);
+		
 		return "board/modifyform.jsp";
 	}
 	
 	@RequestMapping(path = "/modify.do", method = HttpMethod.POST)
 	public String modify(HttpServletRequest req, HttpServletResponse resp) throws Exception{
-		return "redirect:detail.do?no=100";
+		int no = Integer.parseInt(req.getParameter("no"));
+		String title = req.getParameter("title");
+		String content = req.getParameter("content");
+		
+		boardService.update(no, title, content);
+		
+		return "redirect:detail.do?no=" + no;
 	}
 }

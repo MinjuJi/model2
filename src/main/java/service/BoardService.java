@@ -45,5 +45,12 @@ public class BoardService {
 		board.setDeleted("Y");
 		boardDao.updateBoard(board);
 	}
+
+	public void update(int no, String title, String content) throws Exception{
+		Board board = boardDao.getBoardByNo(no);
+		board.setTitle(title);
+		board.setContent(content);
+		boardDao.updateBoard(board);
+	}
 	
 }
