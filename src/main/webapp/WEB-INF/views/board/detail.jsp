@@ -50,6 +50,13 @@
 						</tr>
 					</tbody>
 				</table>
+				
+				<c:if test="${not empty LOGIN_USER && LOGIN_USER.id eq board.user.id }">
+					<div class="text-end">
+						<a href="modify.do?no=${board.no }" class="btn btn-warning">수정</a>
+						<a href="delete.do?no=${board.no }" class="btn btn-danger">삭제</a>
+					</div>
+				</c:if>
 			</div>
 		</div>
 	</div>

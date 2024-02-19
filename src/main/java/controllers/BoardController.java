@@ -76,4 +76,21 @@ public class BoardController {
 		return "board/list.jsp";
 	}
 
+	@RequestMapping(path = "/delete.do")
+	public String delete(HttpServletRequest req, HttpServletResponse resp) throws Exception{
+		int no = Integer.parseInt(req.getParameter("no"));
+		boardService.deleteBoard(no);
+		
+		return "redirect:list.do?page=1";
+	}
+	
+	@RequestMapping(path = "/modify.do")
+	public String modifyform(HttpServletRequest req, HttpServletResponse resp) throws Exception{
+		return "board/modifyform.jsp";
+	}
+	
+	@RequestMapping(path = "/modify.do", method = HttpMethod.POST)
+	public String modify(HttpServletRequest req, HttpServletResponse resp) throws Exception{
+		return "redirect:detail.do?no=100";
+	}
 }

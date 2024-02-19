@@ -39,5 +39,11 @@ public class BoardService {
 		
 		return boardDao.getBoardByNo(no);
 	}
+
+	public void deleteBoard(int no) throws Exception {
+		Board board = boardDao.getBoardByNo(no);
+		board.setDeleted("Y");
+		boardDao.updateBoard(board);
+	}
 	
 }
