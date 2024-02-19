@@ -16,5 +16,10 @@ public class BoardService {
 	public void save(Board board) throws Exception{
 		boardDao.insertBoard(board);
 	}
+
+	public Board getBoardDetail(int no) throws Exception{
+
+		return boardDao.getBoardByNo(no);
+	}
 	
 }

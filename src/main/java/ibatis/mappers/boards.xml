@@ -35,11 +35,8 @@
 		
 		FROM	sample_boards B, sample_users U
 		
-		WHERE	B.board_deleted = 'N'
+		WHERE	B.board_no = #value#
 		AND		B.user_id = U.user_id
-		AND		B.board_no = #no#
-		
-		ORDER BY B.board_no desc
 	</select>
 	
 	<insert id="insertBoard" parameterClass="vo.Board">

@@ -40,7 +40,7 @@
 								<c:forEach var="board" items="${boardList }">
 									<tr>
 										<td>${board.no}</td>
-										<td>${board.title}</td>
+										<td><a href="detail.do?no=${board.no}">${board.title }</a></td>
 										<td>${board.readCount}</td>
 										<td>${board.user.name}</td>
 										<td><fmt:formatDate value="${board.createdDate }"/></td>

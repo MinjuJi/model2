@@ -18,6 +18,16 @@ public class BoardController {
 	
 	private final BoardService boardService = new BoardService();
 	
+	@RequestMapping(path = "/detail.do")
+	public String detail(HttpServletRequest req, HttpServletResponse resp) throws Exception{
+		
+		int no = Integer.parseInt(req.getParameter("no"));
+		Board board = boardService.getBoardDetail(no);
+		req.setAttribute("board", board);
+		
+		return "board/detail.jsp";
+	}
+	
 	@RequestMapping(path = "/insert.do")
 	public String form(HttpServletRequest req, HttpServletResponse resp) throws Exception{
 		return "board/form.jsp";

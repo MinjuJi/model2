@@ -17,8 +17,8 @@ public class BoardDao {
 		return (List<Board>) ibatis.queryForList("boards.getAllBoards");
 	}
 	
-	public List<Board> getBoardByNo(int no) throws SQLException {
-		return (List<Board>) ibatis.queryForObject("boards.getBoardByNo", no);
+	public Board getBoardByNo(int no) throws SQLException {
+		return (Board) ibatis.queryForObject("boards.getBoardByNo", no);
 	}
 	
 	public void insertBoard(Board board) throws SQLException {
