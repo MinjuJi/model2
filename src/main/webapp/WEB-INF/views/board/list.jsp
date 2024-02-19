@@ -59,7 +59,7 @@
 					<ul class="pagination">
 						<c:forEach var="num" begin="1" end="5">
 							<li class="page-item ${param.page eq num ? 'active' : '' }">
-							<a href="list.do?page=${num }" class="page-link">${num }</a>
+								<a href="list.do?page=${num }" class="page-link">${num }</a>
 							</li>
 						</c:forEach>
 					</ul>
@@ -67,5 +67,17 @@
 			</div>
 		</div>
 	</div>
+	
+	
+	<!-- LOGIN_USER라는 속성명으로 조회했을 때 조회되는 정보가 있으면 컨텐츠가 표시되게 한다. -->
+	<c:if test="${not empty LOGIN_USER }">
+		<div class="row mb-3">
+			<div class="col-12">
+				<div class="text-end">
+					<a href="insert.do" class="btn btn-primary">새 게시글</a>
+				</div>
+			</div>
+		</div>
+	</c:if>
 </body>
 </html>

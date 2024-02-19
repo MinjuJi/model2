@@ -12,5 +12,9 @@ public class BoardService {
 	public List<Board> getBoardList() throws Exception{
 		return boardDao.getAllBoards();
 	}
+
+	public void save(Board board) throws Exception{
+		boardDao.insertBoard(board);
+	}
 	
 }

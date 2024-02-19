@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<div>인증이 완료된 사용자 정보 : ${LOGIN_USER }</div>
 <nav class="navbar navbar-expand-sm bg-light">
 	<div class="container">
 		

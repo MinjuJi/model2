@@ -43,7 +43,7 @@
 	</select>
 	
 	<insert id="insertBoard" parameterClass="vo.Board">
-		INSERT sample_boards
+		INSERT INTO sample_boards
 		(board_no, board_title, board_content, user_id)
 		
 		VALUES
